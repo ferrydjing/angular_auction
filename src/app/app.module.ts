@@ -1,3 +1,4 @@
+import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -10,6 +11,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { StarsComponent } from './components/stars/stars.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     ProductDetailComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

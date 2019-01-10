@@ -11,6 +11,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { StarsComponent } from './components/stars/stars.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { ProductService } from './shared/product.service';
 
 
 @NgModule({
@@ -29,7 +30,9 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    ProductService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

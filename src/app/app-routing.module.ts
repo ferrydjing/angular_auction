@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
     {path: 'home', component: HomeComponent},
-    {path: 'product/:productTitle', component: ProductDetailComponent}
+    {path: 'product/:productId', component: ProductDetailComponent}
 ];
 
 @NgModule({

@@ -17,7 +17,9 @@ export class ProductsComponent implements OnInit {
     this.searchTitle.valueChanges
         .pipe(debounceTime(500))
         .subscribe(
-          title => this.keyword = title
+          title => {
+            this.keyword = title;
+          }
         );
   }
 

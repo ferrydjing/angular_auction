@@ -13,6 +13,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { StarsComponent } from './components/stars/stars.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductService } from './shared/product.service';
+import { FilterProductPipe } from './pipe/filter-product.pipe';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ProductService } from './shared/product.service';
     ProductsComponent,
     FooterComponent,
     StarsComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    FilterProductPipe
   ],
   imports: [
     BrowserModule,

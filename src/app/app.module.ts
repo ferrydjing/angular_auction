@@ -1,7 +1,8 @@
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -14,7 +15,6 @@ import { StarsComponent } from './components/stars/stars.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductService } from './shared/product.service';
 import { FilterProductPipe } from './pipe/filter-product.pipe';
-
 
 @NgModule({
   declarations: [
@@ -32,7 +32,9 @@ import { FilterProductPipe } from './pipe/filter-product.pipe';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     ProductService

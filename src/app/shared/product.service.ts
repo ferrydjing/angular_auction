@@ -1,11 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
+  searchEvent: EventEmitter<ProductSearchParams> = new EventEmitter();
+
   constructor(
     private http: HttpClient
   ) { }
@@ -24,15 +27,25 @@ export class ProductService {
     return this.http.get(`/api/product/${productId}/comments`, {
     });
   }
-  private encodeParams(params: ProductSearchParams) {
+  private encodeParams(params: ProductSearchParams): HttpParams{
+    return Object.keys(params)
+                  .filter(key => params[key])
+                  .reduce((sum: HttpParams, key: string) => {
+                    sum = sum.set(key, params[key]);
+                    return sum;
+                  }, new HttpParams());
 
   }
   getCategories(): string[] {
     return ['电子产品', '书籍', '数码产品'];
   }
 
-  search(): any {
-    return this.http.get('/api/products');
+  search(data: ProductSearchParams): any {
+    console.log(data);
+    const params = this.encodeParams(data);
+    return this.http.get('/api/products', {
+      params
+    });
   }
 }
 

@@ -19,9 +19,9 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.searchForm = this.fd.group({
-      productName: ['', Validators.minLength(3)],
-      productPrice: [null, this.priceValidator],
-      productCategory: ['-1']
+      title: ['', Validators.minLength(3)],
+      price: [null, this.priceValidator],
+      category: ['-1']
     });
     this.categories = this.productService.getCategories();
   }
@@ -40,7 +40,7 @@ export class SearchComponent implements OnInit {
 
   onSearch() {
     if (this.searchForm.valid) {
-      console.log(this.searchForm.value);
+      this.productService.searchEvent.emit(this.searchForm.value);
     }
   }
 }

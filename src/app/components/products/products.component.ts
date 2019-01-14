@@ -28,6 +28,9 @@ export class ProductsComponent implements OnInit {
         .subscribe(res => {
           this.products = res;
         });
+    this.productService.searchEvent.subscribe(param => {
+      this.productService.search(param).subscribe(res => this.products = res)
+    });
   }
 
 }

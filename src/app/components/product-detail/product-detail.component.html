@@ -1,38 +1,42 @@
 <div *ngIf="product && comments">
   <div class="thumbnail">
-      <img src="http://via.placeholder.com/800x320" alt="">
-      <h4 class="pull-right">{{product.price}}</h4>
-      <h4>{{product.title}}</h4>
-      <p>
-        {{product.desc}}
-      </p>
+    <img src="http://via.placeholder.com/800x320" alt="">
+    <h4 class="pull-right">{{product.price}}</h4>
+    <h4>{{product.title}}</h4>
+    <p>
+      {{product.desc}}
+    </p>
+    <div>
+      <p class="pull-right">{{comments.length}}</p>
+      <app-stars [rating]='product.rating'></app-stars>
+    </div>
+  </div>
+  <div class="thumbnail">
+      <button class="btn btn-default" (click)="onWatch()">{{isWatched ? '取消订阅' : '订阅'}}</button>
+      <span [hidden]="!isWatched">最新报价为: {{bid | number: '2.2-2'}}</span>
+  </div>
+
+  <div class="well">
+    <div class='row'>
+      <button class="btn btn-success" (click)="isHiddenComment = !isHiddenComment">发表评论</button>
+    </div>
+    <div class="row" [hidden]="isHiddenComment">
+      <app-stars [(rating)]="newRating" [readonly]='false'></app-stars>
+      <textarea cols="30" rows="3" [(ngModel)]="newComment" ></textarea>
       <div>
-        <p class="pull-right">{{comments.length}}</p>
-        <app-stars [rating]='product.rating'></app-stars>
+        <button class="btn" (click)="addComment()">提交</button>
       </div>
     </div>
-    
-    <div class="well">
-      <div class='row'>
-        <button class="btn btn-success" (click)="isHiddenComment = !isHiddenComment">发表评论</button>
-      </div>
-      <div class="row" [hidden]="isHiddenComment">
-        <app-stars [(rating)]="newRating" [readonly]='false'></app-stars>
-        <textarea cols="30" rows="3" [(ngModel)]="newComment" ></textarea>
-        <div>
-          <button class="btn" (click)="addComment()">提交</button>
-        </div>
-      </div>
-      <div class="row" *ngFor="let comment of comments">
-        <hr>
-        <div class="col-md-12">
-          <app-stars [rating]='comment.rating'></app-stars>
-          <p>
-            <span>{{comment.user}}</span>
-            <span class="pull-right">{{comment.time}}</span>
-          </p>
-          <p>{{comment.content}}</p>
-        </div>
+    <div class="row" *ngFor="let comment of comments">
+      <hr>
+      <div class="col-md-12">
+        <app-stars [rating]='comment.rating'></app-stars>
+        <p>
+          <span>{{comment.user}}</span>
+          <span class="pull-right">{{comment.time}}</span>
+        </p>
+        <p>{{comment.content}}</p>
       </div>
     </div>
+  </div>
 </div>

@@ -15,6 +15,7 @@ import { StarsComponent } from './components/stars/stars.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductService } from './shared/product.service';
 import { FilterProductPipe } from './pipe/filter-product.pipe';
+import { WebsocketService } from './shared/websocket.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { FilterProductPipe } from './pipe/filter-product.pipe';
     HttpClientModule
   ],
   providers: [
-    ProductService
+    ProductService,
+    WebsocketService
   ],
   bootstrap: [AppComponent]
 })
